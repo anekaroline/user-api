@@ -1,0 +1,13 @@
+CREATE SCHEMA IF NOT EXISTS users;
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE TABLE users.user(
+    id BIGSERIAL PRIMARY KEY,
+    key UUID DEFAULT uuid_generate_v4() UNIQUE NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    cpf VARCHAR(100) UNIQUE NOT NULL,
+    address VARCHAR(100),
+    email VARCHAR(50) UNIQUE NOT NULL,
+    phone VARCHAR(20),
+    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP
+);
